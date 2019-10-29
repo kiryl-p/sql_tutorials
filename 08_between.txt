@@ -1,0 +1,4 @@
+BETWEEN is a logical operator in SQL that allows you to select only rows that are within a specific range.
+It has to be paired with the AND operator, which you'll learn about in a later lesson.
+
+BETWEEN includes the range bounds that you specify in the query, in addition to the values between them. 
