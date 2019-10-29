@@ -1,0 +1,20 @@
+Once you've learned how to filter data, it's time to learn how to sort data. 
+The ORDER BY clause allows you to reorder your results based on the data in one or more columns
+
+You can also order by mutiple columns. This is particularly useful if your data falls into categories and you'd like to organize rows by date, for example, 
+but keep all of the results within a given category together.
+
+Finally, you can make your life a little easier by substituting numbers for column names in the ORDER BY clause. 
+The numbers will correspond to the order in which you list columns in the SELECT clause. 
+
+
+Using comments
+You can "comment out" pieces of code by adding combinations of characters. 
+In other words, you can specify parts of your query that will not actually be treated like SQL code. 
+It can be helpful to include comments that explain your thinking 
+so that you can easily remember what you intended to do if you ever want to revisit your work. 
+Commenting can also be useful if you want to test variations on your query while keeping all of your code intact.
+
+You can use-- (two dashes) to comment out everything to the right of them on a given line
+
+You can also leave comments across multiple lines using /* to begin the comment and */ to close it

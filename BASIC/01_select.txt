@@ -1,0 +1,7 @@
+you can only run ONE select STATEMENT at a time.
+
+Whenever you select multiple columns, they must be separated by commas,
+but you should not include a comma after the last column name.
+
+SELECT name_name AS "NAME NAME"
+FROM table

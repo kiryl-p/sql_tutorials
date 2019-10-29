@@ -1,0 +1,5 @@
+the limit restricts how many rows the SQL query returns
+
+SELECT column_name
+FROM table_name
+LIMIT number
