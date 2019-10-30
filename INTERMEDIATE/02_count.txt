@@ -1,0 +1,11 @@
+COUNT is a SQL aggregate function for counting the number of rows in a particular column. 
+COUNT is the easiest aggregate function to begin with because verifying your results is extremely simple.
+
+Note: Typing COUNT(1) has the same effect as COUNT(*). Which one you use is a matter of personal preference.
+
+One nice thing about COUNT is that you can use it on non-numerical columns
+
+You might have also noticed that the column header in the results just reads "count." 
+We recommend naming your columns so that they make a little more sense to anyone else who views your work. 
+As mentioned in an earlier lesson, it's best to use lower case letters and underscores.
+You can add column names (also called aliases) using AS
