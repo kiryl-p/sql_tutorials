@@ -3,7 +3,17 @@ The CASE statement is SQL's way of handling if/then logic.
 The CASE statement is followed by at least one pair of WHEN and THEN statements. 
 Because of this pairing, you might be tempted to call this SQL CASE WHEN, but CASE is the accepted term.
 
+Every CASE statement must end with the END statement. The ELSE statement is optional, 
+and provides a way to capture values not specified in the WHEN/THEN statements.
+
+SELECT player_name,
+       year,
+       CASE WHEN year = 'SR' THEN 'yes'
+            ELSE NULL END AS is_a_senior
+  FROM benn.college_football_players
+
 In plain English, here's what's happening:
+
 
 The CASE statement checks each row to see if the conditional statement—year = 'SR' is true.
 For any given row, if that conditional statement is true, the word "yes" gets printed in the column that we have named is_a_senior.
@@ -18,3 +28,33 @@ The CASE statement always goes in the SELECT clause
 CASE must include the following components: WHEN, THEN, and END. ELSE is an optional component.
 You can make any conditional statement using any conditional operator (like WHERE ) between WHEN and THEN. This includes stringing together multiple conditional statements using AND and OR.
 You can include multiple WHEN statements, as well as an ELSE statement to deal with any unaddressed conditions.
+
+
+
+
+
+Using CASE with aggregate functions
+CASE's slightly more complicated and substantially more useful functionality comes from pairing it with aggregate functions. For example, let's say you want to only count rows that fulfill a certain condition. Since COUNT ignores nulls, 
+you could use a CASE statement to evaluate the condition and produce null or non-null values depending on the outcome.
+
+Using CASE inside of aggregate functions
+In the previous examples, data was displayed vertically, but in some instances, you might want to show data horizontally. This is known as "pivoting" (like a pivot table in Excel). Let's take the following query:
+
+
+
+SELECT CASE WHEN year = 'FR' THEN 'FR'
+            WHEN year = 'SO' THEN 'SO'
+            WHEN year = 'JR' THEN 'JR'
+            WHEN year = 'SR' THEN 'SR'
+            ELSE 'No Year Data' END AS year_group,
+            COUNT(1) AS count
+  FROM benn.college_football_players
+ GROUP BY 1
+
+And re-orient it horizontally:
+
+SELECT COUNT(CASE WHEN year = 'FR' THEN 1 ELSE NULL END) AS fr_count,
+       COUNT(CASE WHEN year = 'SO' THEN 1 ELSE NULL END) AS so_count,
+       COUNT(CASE WHEN year = 'JR' THEN 1 ELSE NULL END) AS jr_count,
+       COUNT(CASE WHEN year = 'SR' THEN 1 ELSE NULL END) AS sr_count
+  FROM benn.college_football_players
