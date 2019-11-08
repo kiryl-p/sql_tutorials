@@ -1,1 +1,18 @@
-1
+Intro to SQL joins: relational concepts
+
+Up to this point, we've only been working with one table at a time. 
+The real power of SQL, however, comes from working with data from multiple tables at once. 
+Usually, the tables you work with are all part of the same schema in a relational database. The term "relational database" refers to the fact 
+that the tables within it "relate" to one another—they contain common identifiers that allow information from multiple tables to be combined easily.
+
+Aliases in SQL
+
+When performing joins, it's easiest to give your table names aliases. 
+You can give a table an alias by adding a space after the table name and typing the intended name of the alias. 
+As with column names, best practice here is to use all lowercase letters and underscores instead of spaces.
+
+Once you've given a table an alias, you can refer to columns in that table in the SELECT clause using the alias name. 
+
+JOIN and ON
+After the FROM statement, we have two new statements: JOIN, which is followed by a table name, and ON, which is followed by a couple column names separated by an equals sign.
+hough the ON statement comes after JOIN, it's a bit easier to explain it first. ON indicates how the two tables (the one after the FROM and the one after the JOIN) relate to each other. 
