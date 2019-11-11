@@ -1,0 +1,6 @@
+SQL Joins with Comparison Operators
+
+Using comparison operators with joins
+In the lessons so far, you've only joined tables by exactly matching values from both tables. 
+However, you can enter any type of conditional statement into the ON clause. 
+Here's an example using > to join only investments that occurred more than 5 years after each company's founding year.
