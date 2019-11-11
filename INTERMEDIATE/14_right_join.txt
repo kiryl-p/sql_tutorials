@@ -1,0 +1,11 @@
+SQL RIGHT JOIN
+
+The RIGHT JOIN command
+Right joins are similar to left joins except they return all rows from the table in the RIGHT JOIN clause 
+and only matching rows from the table in the FROM clause.
+
+RIGHT JOIN is rarely used because you can achieve the results of a RIGHT JOIN by simply switching the two joined table names in a LEFT JOIN. 
+
+The convention of always using LEFT JOIN probably exists to make queries easier to read and audit, but beyond that there isn't necessarily a strong reason to avoid using RIGHT JOIN.
+
+It's worth noting that LEFT JOIN and RIGHT JOIN can be written as LEFT OUTER JOIN and RIGHT OUTER JOIN, respectively.
