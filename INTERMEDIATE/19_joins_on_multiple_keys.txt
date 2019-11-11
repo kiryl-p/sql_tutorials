@@ -1,0 +1,9 @@
+SQL Joins on Multiple Keys
+
+Joining on multiple keys
+There are couple reasons you might want to join tables on multiple foreign keys. The first has to do with accuracy.
+
+The second reason has to do with performance. SQL uses "indexes" (essentially pre-defined joins) to speed up queries. 
+This will be covered in greater detail the lesson on making queries run faster, but for all you need to know is that it can occasionally make your query run faster to join on multiple fields, even when it does not add to the accuracy of the query.
+
+It's worth noting that this will have relatively little effect on small datasets.
