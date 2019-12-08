@@ -21,7 +21,10 @@ SELECT teams.conference AS conference,
  ORDER BY 1,2
 View this in Mode.
 
-In order to transform the data, we'll need to put the above query into a subquery. It can be helpful to create the subquery and select all columns from it before starting to make transformations. Re-running the query at incremental steps like this makes it easier to debug if your query doesn't run. Note that you can eliminate the ORDER BY clause from the subquery since we'll reorder the results in the outer query.
+In order to transform the data, we'll need to put the above query into a subquery. 
+It can be helpful to create the subquery and select all columns from it before starting to make transformations. 
+Re-running the query at incremental steps like this makes it easier to debug if your query doesn't run. 
+Note that you can eliminate the ORDER BY clause from the subquery since we'll reorder the results in the outer query.
 
 SELECT *
   FROM (
@@ -33,7 +36,9 @@ SELECT *
             ON teams.school_name = players.school_name
          GROUP BY 1,2
        ) sub
-Assuming that works as planned (results should look exactly the same as the first query), it's time to break the results out into different columns for various years. Each item in the SELECT statement creates a column, so you'll have to create a separate column for each year:
+Assuming that works as planned (results should look exactly the same as the first query), 
+it's time to break the results out into different columns for various years. Each item in the SELECT statement creates a column, 
+so you'll have to create a separate column for each year:
 
 SELECT conference,
        SUM(CASE WHEN year = 'FR' THEN players ELSE NULL END) AS fr,
@@ -51,7 +56,9 @@ SELECT conference,
        ) sub
  GROUP BY 1
  ORDER BY 1
-Technically, you've now accomplished the goal of this tutorial. But this could still be made a little better. You'll notice that the above query produces a list that is ordered alphabetically by Conference. It might make more sense to add a "total players" column and order by that (largest to smallest):
+Technically, you've now accomplished the goal of this tutorial. But this could still be made a little better. 
+You'll notice that the above query produces a list that is ordered alphabetically by Conference. 
+It might make more sense to add a "total players" column and order by that (largest to smallest):
 
 SELECT conference,
        SUM(players) AS total_players,
@@ -76,7 +83,8 @@ Pivoting columns to rows
 A lot of data you'll find out there on the internet is formatted for consumption, not analysis. Take, for example, this table showing the number of earthquakes worldwide from 2000-2012:
 
 
-In this format it's challenging to answer questions like "what's the average magnitude of an earthquake?" It would be much easier if the data were displayed in 3 columns: "magnitude", "year", and "number of earthquakes." Here's how to transform the data into that form:
+In this format it's challenging to answer questions like "what's the average magnitude of an earthquake?" 
+It would be much easier if the data were displayed in 3 columns: "magnitude", "year", and "number of earthquakes." Here's how to transform the data into that form:
 
 First, check out this data in Mode:
 
@@ -84,7 +92,8 @@ SELECT *
   FROM tutorial.worldwide_earthquakes
 Note: column names begin with 'year_' because Mode requires column names to begin with letters.
 
-The first thing to do here is to create a table that lists all of the columns from the original table as rows in a new table. Unless you have a ton of columns to transform, the easiest way is often just to list them out in a subquery:
+The first thing to do here is to create a table that lists all of the columns from the original table as rows in a new table. 
+Unless you have a ton of columns to transform, the easiest way is often just to list them out in a subquery:
 
 SELECT year
   FROM (VALUES (2000),(2001),(2002),(2003),(2004),(2005),(2006),
@@ -99,7 +108,8 @@ SELECT years.*,
          FROM (VALUES (2000),(2001),(2002),(2003),(2004),(2005),(2006),
                       (2007),(2008),(2009),(2010),(2011),(2012)) v(year)
        ) years
-Notice that each row in the worldwide_earthquakes is replicated 13 times. The last thing to do is to fix this using a CASE statement that pulls data from the correct column in the worldwide_earthquakes table given the value in the year column:
+Notice that each row in the worldwide_earthquakes is replicated 13 times. 
+The last thing to do is to fix this using a CASE statement that pulls data from the correct column in the worldwide_earthquakes table given the value in the year column:
 
 SELECT years.*,
        earthquakes.magnitude,
