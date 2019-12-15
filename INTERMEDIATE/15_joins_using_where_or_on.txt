@@ -1,6 +1,0 @@
-SQL Joins Using WHERE or ON
-
-Filtering in the ON clause
-Normally, filtering is processed in the WHERE clause once the two tables have already been joined. 
-It's possible, though that you might want to filter one or both of the tables before joining them. 
-For example, you only want to create matches between the tables under certain circumstances.
