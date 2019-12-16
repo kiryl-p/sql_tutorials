@@ -1,0 +1,10 @@
+NOT is a logical operator in SQL that you can put before any conditional statement 
+to select rows for which that statement is false.
+
+
+Using NOT with < and > usually doesn't make sense because you can simply use the opposite comparative operator instead. 
+For example, this query will return an error.
+
+NOT is commonly used with LIKE.
+
+NOT is also frequently used to identify non-null rows, but the syntax is somewhat special—you need to include IS beforehand
