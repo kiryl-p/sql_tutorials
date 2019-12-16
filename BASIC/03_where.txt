@@ -1,9 +1,0 @@
-SELECT column_name
-FROM table_name
-WHERE condition
-LIMIT number
-
-If you write a WHERE clause that filters based on values in one column,
-you'll limit the results in all columns to rows that satisfy the condition.
-The idea is that each row is one data point or observation,
-and all the information contained in that row belongs together.
