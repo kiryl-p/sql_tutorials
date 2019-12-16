@@ -1,3 +1,0 @@
-LIKE is a logical operator in SQL that allows you to match on similar values rather than exact ones.
-
-In general, putting double quotes around a word or phrase will indicate that you are referring to that column name.
