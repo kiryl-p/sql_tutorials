@@ -1,0 +1,3 @@
+SQL Self Joins
+
+Sometimes it can be useful to join a table to itself. 
