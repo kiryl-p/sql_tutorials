@@ -1,0 +1,19 @@
+SQL INNER JOIN
+
+It's often the case that one or both tables being joined contain rows that don't have matches in the other table. 
+The way this is handled depends on whether you're making an inner join or an outer join.
+
+We'll start with inner joins, which can be written as either:
+
+JOIN table_name or 
+INNER JOIN table_name.
+
+Inner joins eliminate rows from both tables that do not satisfy the join condition set forth in the ON statement. 
+In mathematical terms, an inner join is the intersection of the two tables.
+
+Joining tables with identical column names
+When you join two tables, it might be the case that both tables have columns with identical names. 
+
+The results can only support one column with a given name—when you include 2 columns of the same name, the results will simply show the exact same result set for both columns even if the two columns should contain different data. You can avoid this by naming the columns individually. 
+It happens that these two columns will actually contain the same data because they are used for the join key, 
+
