@@ -1,0 +1,3 @@
+SQL LEFT JOIN
+
+The LEFT JOIN command
