@@ -1,9 +1,0 @@
-Data Wrangling with SQL
-What does it mean to "wrangle" data?
-From Wikipedia:
-
-Data munging or data wrangling is loosely the process of manually converting or mapping data from one "raw" form into another format that allows for more convenient consumption of the data with the help of semi-automated tools.
-
-In other words, data wrangling (or munging) is the process of programmatically transforming data into a format that makes it easier to work with. This might mean modifying all of the values in a given column in a certain way, or merging multiple columns together. The necessity for data wrangling is often a biproduct of poorly collected or presented data. Data that is entered manually by humans is typically fraught with errors; data collected from websites is often optimized to be displayed on websites, not to be sorted and aggregated.
-
-If you work with SQL regularly, you'll need to become really comfortable with these skills, as they are what will allow you to get to the fun stuff.
