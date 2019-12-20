@@ -1,0 +1,19 @@
+SQL Date Format
+Why dates are formatted year-first
+If you live in the United States, you're probably used to seeing dates formatted as MM-DD-YYYY or a similar, month-first format. 
+It's an odd convention compared to the rest of the world's standards, 
+but it's not necessarily any worse than DD-MM-YYYY. The problem with both of these formats is that when they are stored as strings, they don't sort in chronological order. 
+
+You might think that converting these values from string to date might solve the problem, but it's actually not quite so simple. 
+Mode (and most relational databases) format dates as YYYY-MM-DD, a format that makes a lot of sense because it will sort in the same order whether it's stored as a date or as a string. 
+Excel is notorious for producing date formats that don't play nicely with other systems, 
+so if you're exporting Excel files to CSV and uploading them to Mode, you may run into this a lot.
+
+Crazy rules for dates and times
+Assuming you've got some dates properly stored as a date or time data type, you can do some pretty powerful things. 
+Maybe you'd like to calculate a field of dates a week after an existing field. 
+Or maybe you'd like to create a field that indicates how many days apart the values in two other date fields are. 
+These are trivially simple, but it's important to keep in mind that the data type of your results will depend on exactly what you are doing to the dates.
+
+When you perform arithmetic on dates (such as subtracting one date from another), 
+the results are often stored as the interval data type—a series of integers that represent a period of time.
