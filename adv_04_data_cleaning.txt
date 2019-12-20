@@ -1,0 +1,66 @@
+Using SQL String Functions to Clean Data
+
+Cleaning strings
+Most of the functions presented in this section are specific to certain data types. However, using a particular function will, in many cases, change the data to the appropriate type. LEFT, RIGHT, and TRIM are all used to select only certain elements of strings, but using them to select elements of a number or date will treat them as strings for the purpose of the function.
+
+LEFT, RIGHT, and LENGTH
+Let's start with LEFT. You can use LEFT to pull a certain number of characters from the left side of a string and present them as a separate string. The syntax is LEFT(string, number of characters).
+
+RIGHT does the same thing, but from the right side:
+
+RIGHT works well in this case because we know that the number of characters will be consistent across the entire date field. If it wasn't consistent, it's still possible to pull a string from the right side in a way that makes sense. The LENGTH function returns the length of a string. 
+
+When using functions within other functions, it's important to remember that the innermost functions will be evaluated first, followed by the functions that encapsulate them.
+
+TRIM
+The TRIM function is used to remove characters from the beginning and end of a string. Here's an example:
+
+The TRIM function takes 3 arguments. First, you have to specify whether you want to remove characters from the beginning ('leading'), the end ('trailing'), or both ('both', as used above). Next you must specify all characters to be trimmed. Any characters included in the single quotes will be removed from both beginning, end, or both sides of the string. Finally, you must specify the text you want to trim using FROM.
+
+POSITION and STRPOS
+POSITION allows you to specify a substring, then returns a numerical value equal to the character number (counting from left) where that substring first appears in the target string.
+
+You can also use the STRPOS function to achieve the same results—just replace IN with a comma and switch the order of the string and substring:
+
+Importantly, both the POSITION and STRPOS functions are case-sensitive. If you want to look for a character regardless of its case, you can make your entire string a single by using the UPPER or LOWER functions described below.
+
+SUBSTR
+LEFT and RIGHT both create substrings of a specified length, but they only do so starting from the sides of an existing string. If you want to start in the middle of a string, you can use SUBSTR. The syntax is SUBSTR(*string*, *starting character position*, *# of characters*):
+
+CONCAT
+You can combine strings from several columns together (and with hard-coded values) using CONCAT. Simply order the values you want to concatenate and separate them with commas. If you want to hard-code values, enclose them in single quotes.
+
+Alternatively, you can use two pipe characters (||) to perform the same concatenation:
+
+Changing case with UPPER and LOWER
+Sometimes, you just don't want your data to look like it's screaming at you. You can use LOWER to force every character in a string to become lower-case. Similarly, you can use UPPER to make all the letters appear in upper-case:
+
+There are a number of variations of these functions, as well as several other string functions not covered here. Different databases use subtle variations on these functions, so be sure to look up the appropriate database's syntax if you're connected to a private database.
+
+Turning strings into dates
+Dates are some of the most commonly screwed-up formats in SQL. This can be the result of a few things:
+
+The data was manipulated in Excel at some point, and the dates were changed to MM/DD/YYYY format or another format that is not compliant with SQL's strict standards.
+The data was manually entered by someone who use whatever formatting convention he/she was most familiar with.
+The date uses text (Jan, Feb, etc.) intsead of numbers to record months.
+In order to take advantage of all of the great date functionality (INTERVAL, as well as some others you will learn in the next section), you need to have your date field formatted appropriately. This often involves some text manipulation, followed by a CAST. Let's revisit the answer to one of the practice problems above:
+
+Turning dates into more useful dates
+Once you've got a well-formatted date field, you can manipulate in all sorts of interesting ways.
+
+You've learned how to construct a date field, but what if you want to deconstruct one? You can use EXTRACT to pull the pieces apart one-by-one:
+
+
+You can also round dates to the nearest unit of measurement. This is particularly useful if you don't care about an individual date, but do care about the week (or month, or quarter) that it occurred in. The DATE_TRUNC function rounds a date to whatever precision you specify. The value displayed is the first value in that period. So when you DATE_TRUNC by year, any value in that year will be listed as January 1st of that year:
+
+
+
+What if you want to include today's date or time? You can instruct your query to pull the local date and time at the time the query is run using any number of functions. Interestingly, you can run them without a FROM clause:
+
+As you can see, the different options vary in precision. You might notice that these times probably aren't actually your local time. Mode's database is set to Coordinated Universal Time (UTC), which is basically the same as GMT. If you run a current time function against a connected database, you might get a result in a different time zone.
+
+You can make a time appear in a different time zone using AT TIME ZONE:
+
+COALESCE
+Occasionally, you will end up with a dataset that has some nulls that you'd prefer to contain actual values. This happens frequently in numerical data (displaying nulls as 0 is often preferable), and when performing outer joins that result in some unmatched rows. In cases like this, you can use COALESCE to replace the null values
+
